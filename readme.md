@@ -72,7 +72,8 @@ $ python3 backup_database.py
 
 ### 📌 Windows
 ```bash
-
+cd C:/path/.../py-backup-database
+python3 backup_database.py
 ```
 
 
