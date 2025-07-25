@@ -66,13 +66,13 @@ $ pip3 install requests python-dotenv google-api-python-client google-auth-httpl
 ## รัน manual
 ### 📌 Linux / macOS
 ```bash
-$ cd /path/.../py-backup-database
+$ cd /full/path/to/py-backup-database
 $ python3 backup_database.py
 ```
 
 ### 📌 Windows
 ```bash
-cd C:/path/.../py-backup-database
+cd C:/full/path/to/py-backup-database
 python3 backup_database.py
 ```
 
