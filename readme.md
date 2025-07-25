@@ -26,7 +26,7 @@
 
 ## 📂 ตัวอย่างโครงสร้างไฟล์ Backup
 
-\`\`\`
+```
 backups/
 ├── db1/
 │   ├── 2025-07-24.sql
@@ -34,7 +34,7 @@ backups/
 ├── db3/
 │   ├── 2025-07-24.bak
 │   └── ...
-\`\`\`
+```
 
 ---
 
@@ -42,22 +42,16 @@ backups/
 
 ### 1. Clone Repo
 
-\`\`\`bash
+```bash
 git clone https://github.com/yourusername/database-backup-multiprocess.git
 cd database-backup-multiprocess
-\`\`\`
+```
 
 ### 2. ติดตั้งไลบรารีที่จำเป็น
 
-\`\`\`bash
-pip install -r requirements.txt
-\`\`\`
-
-> **หากไม่มีไฟล์ `requirements.txt` ให้ใช้คำสั่งนี้แทน:**
-\`\`\`bash
+```bash
 pip install requests google-api-python-client google-auth-httplib2 google-auth-oauthlib
-\`\`\`
-
+```
 ### 3. เตรียม Google Drive API
 
 - ไปที่ [Google Cloud Console](https://console.cloud.google.com/)
@@ -72,15 +66,15 @@ pip install requests google-api-python-client google-auth-httplib2 google-auth-o
 
 ### 📌 Linux / macOS
 
-\`\`\`bash
+```bash
 crontab -e
-\`\`\`
+```
 
 เพิ่มบรรทัดนี้:
 
-\`\`\`bash
+```bash
 0 1 * * * /usr/bin/python3 /full/path/to/backup_multiprocess.py
-\`\`\`
+```
 
 ### 📌 Windows
 
@@ -93,8 +87,10 @@ crontab -e
 
 ## 🔧 การตั้งค่าหลัก (ใน `backup_multiprocess.py`)
 
-\`\`\`python
+```python
+
 BACKUP_ROOT = "/your/backup/folder"  # รองรับทั้ง Linux และ Windows
+
 MYSQL_USER = "root"
 MYSQL_PASSWORD = "yourpassword"
 MYSQL_DATABASES = ["db1", "db2"]
@@ -105,7 +101,8 @@ SQLSERVER_PASSWORD = "yourpassword"
 SQLSERVER_DATABASES = ["db3", "db4"]
 
 PUSH_URL = "https://example.com/push-msg"
-\`\`\`
+
+```
 
 ---
 
@@ -126,7 +123,7 @@ Distributed under the MIT License. See \`LICENSE\` for more information.
 ## 🙋 Support
 
 หากคุณต้องการปรับแต่งเพิ่มเติม เช่น:
-- ใช้ \`.env\` ไฟล์สำหรับเก็บ config
+- ใช้ `.env` ไฟล์สำหรับเก็บ config
 - ส่งแจ้งเตือนผ่าน LINE Notify
 - จัดหมวดหมู่ใน Google Drive
 
