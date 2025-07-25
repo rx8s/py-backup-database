@@ -43,8 +43,8 @@ backups/
 ### 1. Clone Repo
 
 ```bash
-git clone https://github.com/rx8s/Backupdatabase.git
-cd Backupdatabase
+git clone https://github.com/rx8s/py-backup-database.git
+cd py-backup-database
 ```
 
 ### 2. ติดตั้งไลบรารีที่จำเป็น
