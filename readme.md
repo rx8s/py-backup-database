@@ -4,6 +4,7 @@
 
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-blue)
 ![Python](https://img.shields.io/badge/python-3.7%2B-green)
+![MySQL](https://img.shields.io/badge/Database-MariaDB%20%7C%20MySQL%20%7C%20SQL_Server-yellow)
 ![License](https://img.shields.io/badge/license-MIT-brightgreen)
 
 ---
@@ -43,14 +44,14 @@ backups/
 ### 1. Clone Repo
 
 ```bash
-git clone https://github.com/rx8s/py-backup-database.git
-cd py-backup-database
+$ git clone https://github.com/rx8s/py-backup-database.git
+$ cd py-backup-database
 ```
 
 ### 2. ติดตั้งไลบรารีที่จำเป็น
 
 ```bash
-pip install requests python-dotenv google-api-python-client google-auth-httplib2 google-auth-oauthlib
+$ pip3 install requests python-dotenv google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
 ### 3. เตรียม Google Drive API
 
@@ -61,6 +62,19 @@ pip install requests python-dotenv google-api-python-client google-auth-httplib2
 - รันโปรแกรมครั้งแรกเพื่อ login และสร้าง `token.pickle`
 
 ---
+
+## รัน manual
+### 📌 Linux / macOS
+```bash
+$ cd /path/.../py-backup-database
+$ python3 backup_database.py
+```
+
+### 📌 Windows
+```bash
+
+```
+
 
 ## 🕐 ตั้งเวลารันอัตโนมัติ (01:00 ทุกวัน)
 
