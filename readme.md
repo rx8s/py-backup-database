@@ -43,14 +43,14 @@ backups/
 ### 1. Clone Repo
 
 ```bash
-git clone https://github.com/yourusername/database-backup-multiprocess.git
-cd database-backup-multiprocess
+git clone https://github.com/rx8s/Backupdatabase.git
+cd Backupdatabase
 ```
 
 ### 2. ติดตั้งไลบรารีที่จำเป็น
 
 ```bash
-pip install requests google-api-python-client google-auth-httplib2 google-auth-oauthlib
+pip install requests python-dotenv google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
 ### 3. เตรียม Google Drive API
 
