@@ -2,6 +2,16 @@
 import os
 from ftplib import FTP
 
+
+from email.message import EmailMessage
+from datetime import datetime, time
+
+
+from dotenv import load_dotenv
+load_dotenv()
+
+
+
 def upload_to_ftp(files, host, user, password, remote_path):
     try:
         ftp = FTP(host)

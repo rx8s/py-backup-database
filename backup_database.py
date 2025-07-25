@@ -7,6 +7,7 @@ import requests
 import pickle
 from multiprocessing import Process, Queue
 from ftplib import FTP
+from datetime import datetime
 from dotenv import load_dotenv
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -15,6 +16,7 @@ from google.auth.transport.requests import Request
 
 from upload_to_gdrive import upload_to_gdrive
 from upload_to_ftp import upload_to_ftp
+from notify import notify
 
 load_dotenv()
 
@@ -62,12 +64,6 @@ def cleanup_old_files(folder, ext):
         for f in files[:-KEEP_DAYS]:
             os.remove(f)
 
-def notify():
-    try:
-        requests.get(PUSH_URL)
-    except Exception as e:
-        print(f"Push notify failed: {e}")
-
 def backup_mysql(queue):
     for db in MYSQL_DATABASES:
         db = db.strip()
@@ -107,6 +103,8 @@ def backup_sqlserver(queue):
         queue.put(full_path)
 
 def run_all():
+    start = datetime.now()
+
     mysql_queue = Queue()
     sqlserver_queue = Queue()
 
@@ -138,7 +136,14 @@ def run_all():
     for p in upload_processes:
         p.join()
 
-    notify()
+    end = datetime.now()
+
+    notify(
+        message="Backup job completed successfully",
+        notify_url_value=PUSH_URL,
+        start_time=start.strftime("%Y-%m-%d %H:%M:%S"),
+        end_time=end.strftime("%Y-%m-%d %H:%M:%S"),
+    )
 
 if __name__ == "__main__":
     ensure_dir(BACKUP_ROOT)

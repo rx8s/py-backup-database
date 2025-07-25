@@ -6,6 +6,12 @@ from googleapiclient.http import MediaFileUpload
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
+import os
+from ftplib import FTP
+
+from dotenv import load_dotenv
+load_dotenv()
+
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
 CREDENTIALS_PATH = 'credentials.json'
 TOKEN_PATH = 'token.pickle'
