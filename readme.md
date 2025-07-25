@@ -73,19 +73,19 @@ crontab -e
 เพิ่มบรรทัดนี้:
 
 ```bash
-0 1 * * * /usr/bin/python3 /full/path/to/backup_multiprocess.py
+0 1 * * * /usr/bin/python3 /full/path/to/backup_database.py
 ```
 
 ### 📌 Windows
 
 ใช้ **Task Scheduler**:
 - Trigger: Daily at 01:00
-- Action: Start a program → \`python\`
-- Arguments: \`C:\full\path\to\backup_multiprocess.py\`
+- Action: Start a program → `python`
+- Arguments: `C:\full\path\to\backup_database.py`
 
 ---
 
-## 🔧 การตั้งค่าหลัก (ใน `backup_multiprocess.py`)
+## 🔧 การตั้งค่าหลัก (ใน `backup_database.py`)
 
 ```python
 
@@ -108,15 +108,15 @@ PUSH_URL = "https://example.com/push-msg"
 
 ## 🧠 หมายเหตุสำคัญ
 
-- การ Backup SQL Server แบบ Daily ใช้ \`BACKUP LOG\` (ต้องตั้ง Recovery Model เป็น FULL)
-- หากต้องการเปลี่ยนเป็น **Differential Backup** ให้แก้ \`"LOG"\` → \`"DIFFERENTIAL"\`
+- การ Backup SQL Server แบบ Daily ใช้ `BACKUP LOG` (ต้องตั้ง Recovery Model เป็น FULL)
+- หากต้องการเปลี่ยนเป็น **Differential Backup** ให้แก้ `"LOG"` → `"DIFFERENTIAL"`
 - Google Drive API ต้องเปิดใช้ และ Login ครั้งแรกผ่าน browser (ครั้งเดียว)
 
 ---
 
 ## 📜 License
 
-Distributed under the MIT License. See \`LICENSE\` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
