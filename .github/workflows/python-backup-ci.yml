@@ -1,0 +1,54 @@
+name: Python Backup CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+
+    steps:
+    # 1. Checkout repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. Setup Python environment
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.10
+
+    # 3. Install dependencies
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest flake8
+
+    # 4. Lint code (optional, helps maintain style)
+    - name: Lint with flake8
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --statistics
+
+    # 5. Check essential environment variables
+    - name: Check .env variables
+      run: |
+        if [ ! -f .env ]; then
+          echo ".env file not found!"
+          exit 1
+        fi
+        REQUIRED_VARS=("BACKUP_ROOT" "MYSQL_USER" "MYSQL_PASSWORD")
+        for VAR in "${REQUIRED_VARS[@]}"; do
+          if ! grep -q "$VAR" .env; then
+            echo "Missing required environment variable: $VAR"
+            exit 1
+          fi
+        done
+
+    # 6. Run unit tests
+    - name: Run Python tests
+      run: pytest tests/ --maxfail=1 --disable-warnings -v
